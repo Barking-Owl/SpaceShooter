@@ -3,7 +3,7 @@
  * Date Created: March 16, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 4, 2022
+ * Last Edited: April 6, 2022
  * 
  * Description: Enemy controler
 ****/
@@ -68,4 +68,21 @@ public class Enemy : MonoBehaviour
         pos = temPos; //Set position to the tempos
 
     } //end Move()
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject otherGO = collision.gameObject;
+
+        if (otherGO.tag == "Projectile Hero")
+        {
+            Debug.Log("Enemy hit by projectile called " + otherGO.name);
+            Destroy(otherGO); //Destroy the projectile
+            GameManager.GM.UpdateScore(score); //Add to the score
+            Destroy(gameObject); //Destroy the enemy
+        }
+        else //Projectile wasn't from player ship or something else
+        {
+            Debug.Log("Enemy was hit by a non-projectile");
+        }
+    } //end OnCollisionEnter()
 }

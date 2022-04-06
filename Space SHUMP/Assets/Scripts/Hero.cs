@@ -3,7 +3,7 @@
  * Date Created: March 16, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 4 2022
+ * Last Edited: April 6, 2022
  * 
  * Description: Hero ship controller
 ****/
@@ -45,6 +45,11 @@ public class Hero : MonoBehaviour
     public float pitchMult = 30;
 
 
+    [Space(10)]
+
+    [Header("Projectile Settings")]
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 40;
 
     [Space(10)]
 
@@ -110,6 +115,11 @@ public class Hero : MonoBehaviour
         //Rotate ship
         transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
 
+        //Space to shoot (fire)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FireProjectile();
+        }
     }//end Update()
 
 
@@ -143,4 +153,13 @@ public class Hero : MonoBehaviour
         }
 
     } //end OnTriggerEnter
+
+    void FireProjectile()
+    {
+        GameObject projGO = Instantiate<GameObject>(projectilePrefab); //Spawn projectile at the ship's starting point
+        projGO.transform.position = transform.position;
+        Rigidbody rb = projGO.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.up * projectileSpeed;
+
+    } //end FireProjectile
 }
