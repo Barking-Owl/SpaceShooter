@@ -3,7 +3,7 @@
  * Date Created: March 16, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 6, 2022
+ * Last Edited: April 11, 2022
  * 
  * Description: Hero ship controller
 ****/
@@ -38,6 +38,7 @@ public class Hero : MonoBehaviour
     #endregion
 
     GameManager gm; //reference to game manager
+    ObjectPool pool; //reference to the Object Pool
 
     [Header("Ship Movement")]
     public float speed = 10;
@@ -48,8 +49,10 @@ public class Hero : MonoBehaviour
     [Space(10)]
 
     [Header("Projectile Settings")]
-    public GameObject projectilePrefab;
+    //public GameObject projectilePrefab;
     public float projectileSpeed = 40;
+    public AudioClip projectileSound; //Sound clip of projectile 
+    private AudioSource audioSource;
 
     [Space(10)]
 
@@ -92,6 +95,8 @@ public class Hero : MonoBehaviour
     private void Start()
     {
         gm = GameManager.GM; //find the game manager
+        pool = ObjectPool.POOL; //find the object pool, one per level
+        audioSource = GetComponent<AudioSource>(); //get the reference to audio source
     }//end Start()
 
 
@@ -119,6 +124,7 @@ public class Hero : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             FireProjectile();
+
         }
     }//end Update()
 
@@ -154,12 +160,26 @@ public class Hero : MonoBehaviour
 
     } //end OnTriggerEnter
 
+    //Firing projectile
     void FireProjectile()
     {
-        GameObject projGO = Instantiate<GameObject>(projectilePrefab); //Spawn projectile at the ship's starting point
-        projGO.transform.position = transform.position;
-        Rigidbody rb = projGO.GetComponent<Rigidbody>();
-        rb.velocity = Vector3.up * projectileSpeed;
+        //GameObject projGO = Instantiate<GameObject>(projectilePrefab); //Spawn projectile at the ship's starting point
+        //Reference for projectile
+
+        GameObject projectile = pool.GetObject();
+
+        if (projectile != null) //Only use if there is actually a projectile to be used
+        {
+            if (audioSource != null)
+            {
+                audioSource.PlayOneShot(projectileSound);
+                Debug.Log("Firing with sound");
+            } //end if
+            projectile.transform.position = transform.position;
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.velocity = Vector3.up * projectileSpeed;
+        } //end if
 
     } //end FireProjectile
+
 }

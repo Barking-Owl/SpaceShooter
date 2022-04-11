@@ -3,7 +3,7 @@
  * Date Created: April 6, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 6, 2022
+ * Last Edited: April 11, 2022
  * 
  * Description: Decides and manages projectile boundaries
 ****/
@@ -35,7 +35,10 @@ public class Projectile : MonoBehaviour
         //Check if its gone offscreen
         if (bndCheck.offUp)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false); 
+            bndCheck.offUp = false; //Reset things
+
         }//end if
 
     } //end Update()
