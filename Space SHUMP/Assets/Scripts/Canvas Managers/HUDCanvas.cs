@@ -2,8 +2,8 @@
  * Created by: Akram Taghavi-Burrs
  * Date Created: Feb 23, 2022
  * 
- * Last Edited by: 
- * Last Edited: 
+ * Last Edited by: Andrew Nguyen
+ * Last Edited: April 11, 2022
  * 
  * Description: Updates Heads Up Display (HUD) canvas referencing the game manager
 ****/
