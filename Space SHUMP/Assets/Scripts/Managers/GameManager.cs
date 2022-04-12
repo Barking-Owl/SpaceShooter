@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
     public bool recordHighScore = false; //is the High Score recorded
 
     [SerializeField] //Access to private variables in editor
-    private int defaultHighScore = 1000;
-    static public int highScore = 1000; // the default High Score
+    private int defaultHighScore = 0;
+    static public int highScore = 0; // the default High Score
     public int HighScore { get { return highScore; } set { highScore = value; } }//access to private variable highScore [get/set methods]
 
     [Space(10)]
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     public string defaultEndMessage = "Game Over";//the end screen message, depends on winning outcome
-    public string looseMessage = "You Loose"; //Message if player looses
+    public string looseMessage = "You Lose"; //Message if player looses
     public string winMessage = "You Win"; //Message if player wins
     [HideInInspector] public string endMsg;//the end screen message, depends on winning outcome
 
@@ -163,8 +163,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //if ESC is pressed , exit game
-        if (Input.GetKey("escape")) { ExitGame(); }
+        //if ESC is pressed , exit game. However, since it's a WebGL this is not needed
+        //if (Input.GetKey("escape")) { ExitGame(); }
 
         //check for game state changes
         CheckGameState();

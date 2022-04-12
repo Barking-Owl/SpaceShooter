@@ -266,7 +266,6 @@ MonoBehaviour:
   pitchMult: 30
   projectileSpeed: 40
   projectileSound: {fileID: 8300000, guid: eb36244fbd3fad34fbc0fe6e5bf83b1f, type: 3}
-  audioSource: {fileID: 0}
   _shieldLevel: 2
   maxShield: 4
 --- !u!114 &6650417068716629932
@@ -302,7 +301,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 19813747b9605a04fb384e90b138bc23, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

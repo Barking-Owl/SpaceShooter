@@ -22,14 +22,14 @@ public class HUDCanvas : MonoBehaviour
     GameManager gm; //reference to game manager
 
     [Header("Canvas SETTINGS")]
-    public Text levelTextbox; //textbox for level count
+    //public Text levelTextbox; //textbox for level count
     public Text livesTextbox; //textbox for the lives
     public Text scoreTextbox; //textbox for the score
     public Text highScoreTextbox; //textbox for highscore
     
     //GM Data
-    private int level;
-    private int totalLevels;
+    //private int level;
+    //private int totalLevels;
     private int lives;
     private int score;
     private int highscore;
@@ -40,8 +40,8 @@ public class HUDCanvas : MonoBehaviour
         gm = GameManager.GM; //find the game manager
 
         //reference to levle info
-        level = gm.gameLevelsCount;
-        totalLevels = gm.gameLevels.Length;
+        //level = gm.gameLevelsCount;
+        //totalLevels = gm.gameLevels.Length;
 
 
 
@@ -65,7 +65,7 @@ public class HUDCanvas : MonoBehaviour
     void SetHUD()
     {
         //if texbox exsists update value
-        if (levelTextbox) { levelTextbox.text = "Level " + level + "/" + totalLevels; }
+        //if (levelTextbox) { levelTextbox.text = "Level " + level + "/" + totalLevels; }
         if (livesTextbox) { livesTextbox.text = "Lives " + lives; }
         if (scoreTextbox) { scoreTextbox.text = "Score " + score; }
         if (highScoreTextbox) { highScoreTextbox.text = "High Score " + highscore; }
