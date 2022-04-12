@@ -468,7 +468,7 @@ MonoBehaviour:
     assets.
   copyrightDate: Copyright 2022
   recordHighScore: 1
-  defaultHighScore: 1000
+  defaultHighScore: 0
   defaultsLives: 3
   resetLostLevel: 1
   gameRestartDelay: 2
